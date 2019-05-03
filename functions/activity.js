@@ -4,7 +4,7 @@ const User = require('../Modules/User/Models/User')
 const request = require('request')
 var nodemailer = require("nodemailer")
 var sgTransport = require("nodemailer-sendgrid-transport")
-const config = require('../mymappapi.json')
+const config = require('../braxmax.json')
 
 var options = {
     auth: {
