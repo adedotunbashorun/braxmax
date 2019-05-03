@@ -7,7 +7,6 @@ var cors = require('cors')
 var path = require('path')
 const config = require('./config')
 app = express()
-// require('./electron')
 
 var passport = require('passport')
 
