@@ -1,11 +1,11 @@
 module.exports = development ={
     app:{
-        port: process.env.PORT || 5000
+        port: process.env.PORT
     },
     db: {
-        url: 'mongodb://localhost:27017/mymappapi',
-        host: process.env.Dev_DBHost || 'localhost',
+        url: process.env.DEV_URL,
+        host: process.env.DEV_DB_HOST,
         port: parseInt(process.env.DEV_DB_PORT) || 27017,
-        name: process.env.DEV_DB_NAME || 'mymappapi'
+        name: process.env.DEV_DB_DATABASE || 'mymappapi'
     }
 }

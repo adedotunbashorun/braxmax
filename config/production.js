@@ -4,8 +4,8 @@ module.exports = production = {
     },
     db: {
         url: (process.env.MONGODB_URI) ? process.env.MONGODB_URI : '',
-        host: process.env.Prod_DBHost || 'localhost',
-        port: parseInt(process.env.Prod_DB_PORT) || 27017,
-        name: process.env.Prod_DB_NAME || 'mymappapi'        
+        host: process.env.DB_HOST || 'localhost',
+        port: parseInt(process.env.DB_PORT) || 27017,
+        name: process.env.DB_DATABASE || 'mymappapi'        
     }
 }

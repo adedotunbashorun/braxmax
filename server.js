@@ -4,7 +4,7 @@ var morgan = require('morgan')
 var path = require('path')
 var mongoose = require('mongoose')
 var cors = require('cors')
-var path = require('path')
+
 const config = require('./config')
 app = express()
 

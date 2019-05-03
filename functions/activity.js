@@ -12,6 +12,7 @@ var options = {
         api_key: config.sendgrid_password
     }
 }
+
 var client = nodemailer.createTransport(sgTransport(options))
 
 var fs = require('fs')
@@ -103,6 +104,7 @@ Activity.html2 = function (data) {
         '<div style="background-color: #fefefepadding:20pxcolor:#000">' + data + '</div>' +
         '</div>'
 }
+
 Activity.SupportEmail = function(data, subject, message) {
     try {
         var email = {
