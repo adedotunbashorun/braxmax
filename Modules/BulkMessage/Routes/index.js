@@ -2,7 +2,7 @@
 
 const express = require('express')
 const router = express.Router()
-const BulkMessageController = require('../controllers/BulkMessageController')
+const BulkMessageController = require('../Controllers/BulkMessageController')
 
 router.post('/message/create', (req, res, next) => {
     BulkMessageController.create(req, res, next)

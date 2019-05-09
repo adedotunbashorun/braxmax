@@ -1,6 +1,6 @@
 'use strict'
 
-const BulkMessage = require('../models/BulkMessage')
+const BulkMessage = require('../Models/BulkMessage')
 const Activity = require('../../../functions/activity')
 
 class BulkMessageController {
