@@ -44,14 +44,11 @@ const mapRoutes = require('./Modules/Map/Routes')
 const bulkRoute = require('./Modules/BulkMessage/Routes')
 const supportRoutes = require('./Modules/Support/Routes')
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.json({ limit: '50mb' }))
 app.use(express.urlencoded({ limit: '50mb', extended: false }))
-//set static folder
-app.use(express.static(path.join(__dirname, '/dist')))
-app.use('/images', express.static(path.join(__dirname, 'images')))
 
 app.use('/api', authRoutes)
 app.use('/api', userRoutes)
@@ -59,6 +56,12 @@ app.use('/api', siteRoutes)
 app.use('/api', mapRoutes)
 app.use('/api', bulkRoute)
 app.use('/api', supportRoutes)
+
+//set static folder
+app.use(express.static(path.join(__dirname, '/dist')))
+app.use('/', express.static(path.join(__dirname,'')))
+
+
 
 app.listen(port)
 console.log('server started ' + port)
