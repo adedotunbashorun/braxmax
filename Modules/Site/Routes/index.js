@@ -12,7 +12,6 @@ const MailSettingsController = require('../Controllers/MailSettingsController')
 const SystemSettingsController = require('../Controllers/SettingsController')
 const ContinentSeeder = require('../Seeders/ContinentSeeder')
 
-
 router.get('/country/all', (req, res, next) => {
     CountryController.getAll(req, res, next)
 })
@@ -20,11 +19,9 @@ router.get('/country/all', (req, res, next) => {
 router.get('/country/:id', (req, res, next) => {
     CountryController.getOne(req, res, next)
 })
-
 router.get('/continent/all', (req, res, next) => {
     ContinentController.getAll(req, res, next)
 })
-
 router.get('/continent/:id', (req, res, next) => {
     ContinentController.getOne(req, res, next)
 })
@@ -87,6 +84,9 @@ router.get('/unsubscribe/:email', (req, res, next) => {
 
 router.get('/seed/continents', (req, res, next) => {
     ContinentSeeder.seedContinent(req, res, next)
+})
+router.get('/welcome', (req, res, next) => {
+   res.send('Welcome clement i will send the api docs soon')
 })
 
 module.exports = router
