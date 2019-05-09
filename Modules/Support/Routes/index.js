@@ -3,7 +3,7 @@
 const express = require('express')
 const router = express.Router()
 const Guard = require('../../../functions/auth')
-const SupportController = require('../Controllers/supportController')
+const SupportController = require('../Controllers/SupportController')
 const Priority = require('../Seeders/prioritySeeder')
 
 router.post('/support/create', [Guard.isValidUser], (req, res, next) => {
