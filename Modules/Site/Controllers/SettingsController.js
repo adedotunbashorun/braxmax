@@ -1,6 +1,6 @@
 'use strict'
 
-const SystemSettings = require('../models/SystemSettings')
+const SystemSettings = require('../Models/SystemSettings')
 
 class SystemSettingsController {
 
