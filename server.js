@@ -41,7 +41,7 @@ const authRoutes = require('./Modules/Authentication/Routes')
 const userRoutes = require('./Modules/User/Routes')
 const siteRoutes = require('./Modules/Site/Routes')
 const mapRoutes = require('./Modules/Map/Routes')
-const bulkRoute = require('./Modules/BulkMessage/Routes')
+// const bulkRoute = require('./Modules/BulkMessage/Routes')
 const supportRoutes = require('./Modules/Support/Routes')
 
 app.use(bodyParser.json());
@@ -54,7 +54,7 @@ app.use('/api', authRoutes)
 app.use('/api', userRoutes)
 app.use('/api', siteRoutes)
 app.use('/api', mapRoutes)
-app.use('/api', bulkRoute)
+// app.use('/api', bulkRoute)
 app.use('/api', supportRoutes)
 
 //set static folder
