@@ -1,6 +1,6 @@
 var express = require('express')
 var morgan = require('morgan')
-// var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 var path = require('path')
 var mongoose = require('mongoose')
 var cors = require('cors')
