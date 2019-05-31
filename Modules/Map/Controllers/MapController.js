@@ -1,8 +1,8 @@
 'use strict'
 
-const Activity = require('../../../functions/activity')
-const Maps = require('../Models/Map')
-const File = require('../../../functions/file')
+const Activity = require('functions/activity')
+const Maps = require('Modules/Map/Models/Map')
+const File = require('functions/file')
 
 class MapController { 
 

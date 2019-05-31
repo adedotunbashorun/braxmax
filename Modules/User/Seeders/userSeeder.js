@@ -1,9 +1,9 @@
 'use strict'
 
-const User = require('../Models/User')
+const User = require('Modules/User/Models/User')
 const UserSeeder = {}
 const crypto = require('crypto')
-const Activity = require('../../../functions/activity')
+const Activity = require('functions/activity')
 
 UserSeeder.seedUser = (req, res) => {
     try {

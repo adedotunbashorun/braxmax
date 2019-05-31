@@ -2,8 +2,8 @@
 
 const express = require('express')
 const router = express.Router()
-const Guard = require('../../../functions/auth')
-const MapController = require('../Controllers/MapController')
+const Guard = require('functions/auth')
+const MapController = require('Modules/Map/Controllers/MapController')
 
 router.post('/map/create', [Guard.isValidUser],(req,res,next) =>{
     MapController.create(req,res,next)

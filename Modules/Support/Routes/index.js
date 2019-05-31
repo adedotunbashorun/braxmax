@@ -2,9 +2,9 @@
 
 const express = require('express')
 const router = express.Router()
-const Guard = require('../../../functions/auth')
-const SupportController = require('../Controllers/SupportController')
-const Priority = require('../Seeders/prioritySeeder')
+const Guard = require('functions/auth')
+const SupportController = require('Modules/Support/Controllers/SupportController')
+const Priority = require('Modules/Support/Seeders/prioritySeeder')
 
 router.post('/support/create', [Guard.isValidUser], (req, res, next) => {
     SupportController.create(req, res, next)

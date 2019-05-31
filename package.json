@@ -1,11 +1,13 @@
 {
-  "name": "BraxMap",
+  "name": "braxmap",
   "version": "1.0.0",
   "description": "",
+  "main": "./src/index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon build/index.js",
     "test": "mocha",
-    "local": "nodemon -r dotenv/config server.js"
+    "local": "nodemon -r dotenv/config build/index.js",
+    "webpack": "webpack --config webpack.config.js"
   },
   "keywords": [],
   "author": {
@@ -13,14 +15,13 @@
     "name": "Adedotun Bashorun",
     "url": "http://adedotunbashorun.com"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "dotenv": "^8.0.0",
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
     "jsonwebtoken": "^8.5.1",
@@ -33,10 +34,13 @@
     "nodemon": "^1.19.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "dotenv": "^8.0.0",
     "mocha": "^5.2.0",
     "request": "^2.88.0",
     "should": "^13.2.3",

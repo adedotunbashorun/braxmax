@@ -2,8 +2,8 @@
 
 const passport = require('passport')
 const crypto = require('crypto')
-const User = require('../../User/Models/User')
-const Activity = require('../../../functions/activity')
+const User = require('Modules/User/Models/User')
+const Activity = require('functions/activity')
 const jwt = require('jsonwebtoken')
 var token
 

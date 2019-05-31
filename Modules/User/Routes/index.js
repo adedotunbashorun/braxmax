@@ -2,9 +2,9 @@
 
 const express = require('express')
 const router = express.Router()
-const Guard = require('../../../functions/auth')
-const UserController = require('../Controllers/UserController')
-const User = require('../Seeders/userSeeder')
+const Guard = require('functions/auth')
+const UserController = require('Modules/User/Controllers/UserController')
+const User = require('Modules/User/Seeders/userSeeder')
 
 router.patch('/user/update/:id', [Guard.isValidUser], (req, res, next) => {
     UserController.update(req, res, next)

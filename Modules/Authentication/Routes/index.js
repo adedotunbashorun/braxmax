@@ -2,8 +2,8 @@
 
 const express = require('express');
 const router = express.Router();
-const Guard = require('../../../functions/auth');
-const AuthenticationController = require('../Controllers/AuthenticationController');
+const Guard = require('functions/auth');
+const AuthenticationController = require('Modules/AUthentication/Controllers/AuthenticationController');
 
 router.post('/register', (req, res, next) => {
     AuthenticationController.register(req, res, next);

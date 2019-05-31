@@ -1,8 +1,8 @@
 'use strict'
 
-const Activity = require('../../../functions/activity')
-const File = require('../../../functions/file')
-const User = require('../Models/User')
+const Activity = require('functions/activity')
+const File = require('functions/file')
+const User = require('Modules/User/Models/User')
 
 class UserController {    
 

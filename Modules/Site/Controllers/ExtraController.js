@@ -1,9 +1,9 @@
 'use strict'
 
-const Support = require('../../Support/Models/Support')
-const EmailAlert = require('../Models/Email')
-const User = require('../../User/Models/User')
-const Activity = require('../../../functions/activity')
+const Support = require('Modules/Support/Models/Support')
+const EmailAlert = require('Modules/Site/Models/Email')
+const User = require('Modules/User/Models/User')
+const Activity = require('functions/activity')
 const result = {}
 
 class ExtraController {

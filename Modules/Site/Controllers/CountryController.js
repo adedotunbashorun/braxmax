@@ -1,6 +1,6 @@
 'use strict'
-const Country = require('../Models/Country')
-const Activity = require('../../../functions/activity')
+const Country = require('Modules/Site/Models/Country')
+const Activity = require('functions/activity')
 
 class CountryController {
 

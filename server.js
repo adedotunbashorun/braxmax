@@ -6,7 +6,8 @@ var mongoose = require('mongoose')
 var cors = require('cors')
 
 const config = require('./config')
-app = express()
+
+const app = express()
 
 var passport = require('passport')
 
@@ -14,7 +15,7 @@ const port = config.app.port
 
 try {
     mongoose.set('useCreateIndex', true)
-    mongoose.connect("mongodb://heroku_gxrddznw:9qariqjloov1pq9k5er3kr8hrk@ds153766.mlab.com:53766/heroku_gxrddznw", { useNewUrlParser: true }).then(() => { // if all is ok we will be here
+    mongoose.connect(config.db.url, { useNewUrlParser: true }).then(() => { // if all is ok we will be here
         console.log("connected")
     }).catch(err => { // we will not be here...
         console.error('App starting error: Network Issue')
@@ -63,5 +64,6 @@ app.use('/', express.static(path.join(__dirname,'')))
 
 
 
-app.listen(port)
-console.log('server started ' + port)
+app.set('port',port)
+
+module.exports = app

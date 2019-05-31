@@ -1,6 +1,6 @@
 'use strict'
 
-const Priority = require('../Models/SupportPriorities')
+const Priority = require('Modules/Support/Models/SupportPriorities')
 const PrioritySeeder = {}
 
 PrioritySeeder.seedPriorities = (req, res) => {

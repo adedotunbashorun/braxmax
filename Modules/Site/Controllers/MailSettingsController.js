@@ -1,6 +1,6 @@
 'use strict'
 
-const MailSettings = require('../Models/MailSettings')
+const MailSettings = require('Modules/Site/Models/MailSettings')
 
 class MailSettingsController {
 

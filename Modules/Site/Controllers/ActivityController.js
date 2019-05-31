@@ -1,6 +1,6 @@
 'use strict'
 
-const Activity = require('../Models/ActivityLog')
+const Activity = require('Modules/Site/Models/ActivityLog')
 
 class activitytController {
 

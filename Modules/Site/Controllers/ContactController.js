@@ -1,7 +1,7 @@
 'use strict'
 
-const Contact = require('../Models/Contact')
-const Activity = require('../../../functions/activity')
+const Contact = require('Modules/Site/Models/Contact')
+const Activity = require('functions/activity')
 
 class ContactController {
 

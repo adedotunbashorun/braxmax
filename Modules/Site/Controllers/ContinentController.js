@@ -1,8 +1,8 @@
 'use strict'
 
-const Continent = require('../Models/Continent')
-const Country = require('../Models/Country')
-const Activity = require('../../../functions/activity')
+const Continent = require('Modules/Site/Models/Continent')
+const Country = require('Modules/Site/Models/Country')
+const Activity = require('functions/activity')
 
 class ContinentController{
 

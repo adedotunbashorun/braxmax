@@ -1,10 +1,10 @@
 'use strict'
 
-const Support = require('../Models/Support')
-const Priority = require('../Models/SupportPriorities')
-const Replies = require('../Models/SupportReplies')
+const Support = require('Modules/Support/Models/Support')
+const Priority = require('Modules/Support/Models/SupportPriorities')
+const Replies = require('Modules/Support/Models/SupportReplies')
 const crypto = require('crypto')
-const Activity = require('../../../functions/activity')
+const Activity = require('functions/activity')
 
 class SupportController {
 
