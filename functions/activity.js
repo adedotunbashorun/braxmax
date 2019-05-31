@@ -8,8 +8,8 @@ const config = require('../braxmax.json')
 
 var options = {
     auth: {
-        api_user: config.sendgrid_user_name,
-        api_key: config.sendgrid_password
+        api_user: process.env.SENDGRID_USERNAME,
+        api_key: process.env.SENDGRID_PASSWORD
     }
 }
 
