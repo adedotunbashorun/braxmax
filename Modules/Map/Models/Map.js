@@ -11,9 +11,9 @@ const MapSchema = new Schema({
     name: { type: String, required: true, index: { unique: true, dropDups: true }},
     description: { type: String },
     image:{type: String},
-    html_file: { type: String },
-    js_file: { type: String },
-    zip_file: { type: String },
+    html_file: { type: String, default : null },
+    js_file: { type: String, default : null},
+    zip_file: { type: String,default : null },
 }, { timestamps: true })
 
 MapSchema.plugin(uniqueValidator)
