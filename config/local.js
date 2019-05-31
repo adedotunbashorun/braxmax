@@ -1,6 +1,6 @@
 module.exports = local = {
     app: {
-        port: process.env.PORT
+        port: process.env.PORT || 5000
     },
     db: {
         url: process.env.DEV_URL,

@@ -8,16 +8,16 @@ class ContactController {
     static create(req, res,next) {
         try {
             if (!req.body.full_name) {
-                res.status(422).json({ 'error': 'Please provide full name' })
+                return res.status(422).json({ 'error': 'Please provide full name' })
             }
             if (!req.body.email) {
-                res.status(422).json({ 'error': 'Please provide email' })
+                return res.status(422).json({ 'error': 'Please provide email' })
             }
             if (!req.body.phone) {
-                res.status(422).json({ 'error': 'Please provide phone number' })
+                return res.status(422).json({ 'error': 'Please provide phone number' })
             }
             if (!req.body.message) {
-                res.status(422).json({ 'error': 'Please provide message' })
+                return res.status(422).json({ 'error': 'Please provide message' })
             }
             const contact = new Contact(req.body)
             contact.save(function(error) {

@@ -20,7 +20,7 @@ class File{
         if (typeof file != 'undefined' || file != "" || file != null) {
             const base64data = file.content.replace(/^data:.*,/, '')
             url = userFiles + "/file/" + file + name
-            fs.writeFile(userFiles+"/file/" + file + name, base64data, 'base64', (err) => {
+            fs.writeFile(userFiles+"/file/"+ name + "/" + file + name, base64data, 'base64', (err) => {
                 if (err) {
                     return err
                 } else {

@@ -12,21 +12,39 @@ const MailSettingsController = require('../Controllers/MailSettingsController')
 const SystemSettingsController = require('../Controllers/SettingsController')
 const ContinentSeeder = require('../Seeders/ContinentSeeder')
 
-router.get('/country/all', (req, res, next) => {
+router.get('/countries',[Guard.isValidUser], (req, res, next) => {
     CountryController.getAll(req, res, next)
 })
 
-router.get('/country/:id', (req, res, next) => {
+router.post('/country/create',[Guard.isValidUser], (req, res, next) => {
+    CountryController.create(req, res, next)
+})
+
+router.patch('/country/update/:id',[Guard.isValidUser], (req, res, next) => {
+    CountryController.update(req, res, next)
+})
+
+router.get('/country/:id',[Guard.isValidUser], (req, res, next) => {
     CountryController.getOne(req, res, next)
 })
-router.get('/continent/all', (req, res, next) => {
+
+router.get('/continents',[Guard.isValidUser], (req, res, next) => {
     ContinentController.getAll(req, res, next)
 })
-router.get('/continent/:id', (req, res, next) => {
+
+router.post('/continent/create',[Guard.isValidUser], (req, res, next) => {
+    ContinentController.create(req, res, next)
+})
+
+router.patch('/continent/update/:id',[Guard.isValidUser], (req, res, next) => {
+    ContinentController.update(req, res, next)
+})
+
+router.get('/continent/:id',[Guard.isValidUser], (req, res, next) => {
     ContinentController.getOne(req, res, next)
 })
 
-router.get('/continent/country/:continent_id', (req, res, next) => {
+router.get('/continent/country/:continent_id',[Guard.isValidUser], (req, res, next) => {
     ContinentController.getAllCountry(req, res, next)
 })
 
@@ -62,7 +80,7 @@ router.post('/contact/create', (req, res, next) => {
     ContactController.create(req, res, next)
 })
 
-router.get('/contact/all', (req, res, next) => {
+router.get('/contacts',[Guard.isValidUser], (req, res, next) => {
     ContactController.getAll(req, res, next)
 })
 

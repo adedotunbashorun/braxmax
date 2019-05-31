@@ -12,16 +12,16 @@ class UserController {
                 if (error) {
                     return res.status(501).json({ error: error, msg: error.message })
                 } else {
-                    user.title = req.body.title
-                    user.first_name = req.body.first_name
-                    user.last_name = req.body.last_name
-                    user.email = req.body.email
-                    user.username = req.body.username
-                    user.city = req.body.city
-                    user.country = req.body.country
-                    user.phone = req.body.phone
-                    user.postal_code = req.body.postal_code
-                    user.address = req.body.address
+                    user.title = (req.body.title) ? req.body.title : user.title
+                    user.first_name = (req.body.first_name) ? req.body.first_name : user.first_name
+                    user.last_name = (req.body.last_name) ? req.body.last_name : user.last_name
+                    user.email = (req.body.email) ? req.body.email : user.email
+                    user.username = (req.body.username) ? req.body.username : user.username
+                    user.city = (req.body.city) ? req.body.city : user.city
+                    user.country = (req.body.country) ? req.body.country : user.country
+                    user.phone = (req.body.phone) ? req.body.phone : user.phone
+                    user.postal_code = (req.body.postal_code) ? req.body.postal_code : user.postal_code
+                    user.address = (req.body.address) ? req.body.address : user.address
                     user.save(function (error) {
                         if (error) {
                             Activity.activity_log(req, user._id, 'Error Updating Profile!')

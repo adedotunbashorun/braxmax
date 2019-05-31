@@ -36,8 +36,8 @@ class ExtraController {
     }
 
     static emailAlert(req,res,next){
-        EmailAlert.findOne({ email: req.params.email }).then(function (email) {
-            if(email.email === req.params.email)
+        EmailAlert.findOne({ email: req.body.email }).then(function (email) {
+            if(email != null && email.email === req.body.email)
                 return res.status(201).json({ msg: 'you are a subscribed member, thanks you!' })
             else
                 Activity.alertEmail(req)
