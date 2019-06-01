@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-
+var nodeExternals = require('webpack-node-externals')
 /*
  * SplitChunksPlugin is enabled by default and replaced
  * deprecated CommonsChunkPlugin. It automatically identifies modules which
@@ -32,7 +32,7 @@ module.exports = {
 	mode: NODE_ENV,
 	target: 'node',
 	watch: NODE_ENV === 'development',
-	// externals: [nodeExternals()],
+	externals: [nodeExternals()],
 	output: {
 		path: path.resolve(__dirname, 'build'),
 		filename: 'index.js'

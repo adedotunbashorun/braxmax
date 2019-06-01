@@ -1,8 +1,10 @@
 var express = require('express')
 var morgan = require('morgan')
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser')
 var path = require('path')
 var mongoose = require('mongoose')
+const formData = require("express-form-data")
+const os = require("os")
 var cors = require('cors')
 
 const config = require('./config')
@@ -28,6 +30,11 @@ try {
 
 require('./passport-config')
 
+const options = {
+    uploadDir: os.tmpdir(),
+    autoClean: true
+}
+
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -47,6 +54,14 @@ const supportRoutes = require('./Modules/Support/Routes')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+// parse data with connect-multiparty. 
+app.use(formData.parse(options));
+// clear from the request and delete all empty files (size == 0)
+app.use(formData.format());
+// change file objects to stream.Readable 
+app.use(formData.stream());
+// union body and files
+app.use(formData.union());
 
 app.use(express.json({ limit: '50mb' }))
 app.use(express.urlencoded({ limit: '50mb', extended: false }))

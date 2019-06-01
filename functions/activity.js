@@ -13,12 +13,11 @@ var options = {
     }
 }
 
-var client = nodemailer.createTransport(sgTransport(options))
+let client = nodemailer.createTransport(sgTransport(options))
 
 var fs = require('fs')
 const Activity = {}
 var result = {}
-var item
 var trans
 var data = {}
 

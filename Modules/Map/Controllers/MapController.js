@@ -9,24 +9,25 @@ class MapController {
     static create(req, res, next) {
         try {
             if (!req.body.continent_id) {
-                res.status(422).json({ 'error': 'Please provide continent for your map' })
+                return res.status(422).json({ 'error': 'Please provide continent for your map' })
             }
             if (!req.body.country_id) {
-                res.status(422).json({ 'error': 'Please provide country' })
+                return res.status(422).json({ 'error': 'Please provide country' })
             }
             if (!req.body.name) {
-                res.status(422).json({ 'error': 'Please provide name' })
+                return res.status(422).json({ 'error': 'Please provide name' })
             }
+
             const map = new Maps()
             map.user_id = req.body.user._id
             map.continent_id = req.body.continent_id
             map.country_id = req.body.country_id
             map.name = req.body.name
             map.description = req.body.description
-            map.image = (req.body.image) ? File.Image(req.body.image) : ''
-            map.html_file = (req.body.html_file) ? File.generalFile(req.body.html_file, req.body.name) : ''
-            map.js_file = (req.body.js_file) ? File.generalFile(req.body.js_file, req.body.name) : ''
-            map.zip_file = (req.body.zip_file) ? File.zipFile(req.body.zip_file, req.body.name) : ''
+            map.image = (req.body.image) ? File.Image(req.body.image, req.body.name,'.png') : ''
+            map.html_file = (req.body.html_file) ? File.generalFile(req.body.html_file, req.body.name,'.html') : ''
+            map.js_file = (req.body.js_file) ? File.generalFile(req.body.js_file, req.body.name,'.js') : ''
+            map.zip_file = (req.body.zip_file) ? File.zipFile(req.body.zip_file, req.body.name,'') : ''
             map.save(function (error) {
                 if (error) {
                     return res.status(401).json({ error: error, msg: error.message })
