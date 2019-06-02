@@ -8,16 +8,16 @@ class BulkMessageController {
     static create(req, res, next) {
         try {
             if (!req.body.title) {
-                res.status(422).json({ 'error': 'Please provide subject of the message' })
+                return res.status(422).json({ 'error': 'Please provide subject of the message' })
             }
             if (!req.body.message) {
-                res.status(422).json({ 'error': 'Please provide message' })
+                return res.status(422).json({ 'error': 'Please provide message' })
             }
             if (!req.body.medium) {
-                res.status(422).json({ 'error': 'Please provide medium' })
+                return res.status(422).json({ 'error': 'Please provide medium' })
             }
             if (!req.body.receiver) {
-                res.status(422).json({ 'error': 'Please provide user type' })
+                return res.status(422).json({ 'error': 'Please provide user type' })
             }
             const message = new BulkMessage(req.body)
             message.save(function(error) {

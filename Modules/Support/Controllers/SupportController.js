@@ -11,13 +11,13 @@ class SupportController {
     static create(req, res, next) {
         try {
             if (!req.body.title) {
-                res.status(422).json({ 'error': 'Please provide title for your support message' })
+                return res.status(422).json({ 'error': 'Please provide title for your support message' })
             }
             if (!req.body.message) {
-                res.status(422).json({ 'error': 'Please provide support message' })
+                return res.status(422).json({ 'error': 'Please provide support message' })
             }
             if (!req.body.dispute_priority_id) {
-                res.status(422).json({ 'error': 'Please provide priority' })
+                return res.status(422).json({ 'error': 'Please provide priority' })
             }
             const support = new Support()
             support.user_id = req.body.user._id
@@ -43,7 +43,7 @@ class SupportController {
     static create_reply(req, res, next) {
         try {
             if (!req.body.message) {
-                res.status(422).json({ 'msg': 'Please provide support message' })
+                return res.status(422).json({ 'msg': 'Please provide support message' })
             }
             const reply = new Replies()
             reply.user_id = req.body.user_id

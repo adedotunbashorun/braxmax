@@ -19,4 +19,4 @@ const CustomMapSchema = new Schema({
 }, { timestamps: true })
 
 CustomMapSchema.plugin(uniqueValidator)
-module.exports = mongoose.model('CustomMapSchema', CustomMapSchema)
+module.exports = mongoose.model('CustomMap', CustomMapSchema)

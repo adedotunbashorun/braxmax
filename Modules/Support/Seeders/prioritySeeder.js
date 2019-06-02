@@ -7,7 +7,6 @@ PrioritySeeder.seedPriorities = (req, res) => {
     //deleting all db data
     try{
         Priority.remove({ _id: { $ne: null } }).then(() => {
-
         }).catch(error => {
             return res.status(422).json({ error: error })
         })

@@ -19,49 +19,49 @@ class MapController {
             }
 
             const map = new Maps()
-            map.user_id = req.body.user._id
+            map.user_id = req.body.user_id
             map.continent_id = req.body.continent_id
             map.country_id = req.body.country_id
             map.name = req.body.name
             map.description = req.body.description
-            map.image = (req.body.image) ? File.Image(req.body.image, req.body.name,'.png') : ''
-            map.html_file = (req.body.html_file) ? File.generalFile(req.body.html_file, req.body.name,'.html') : ''
-            map.js_file = (req.body.js_file) ? File.generalFile(req.body.js_file, req.body.name,'.js') : ''
-            map.zip_file = (req.body.zip_file) ? File.zipFile(req.body.zip_file, req.body.name,'') : ''
+            map.image = (req.body.image) ? File.Image(req.body.image,"/images/profile/", req.body.name,'.png') : ''
+            map.html_file = (req.body.html_file) ? File.generalFile(req.body.html_file,"/files/html/", req.body.name,'.html') : ''
+            map.js_file = (req.body.js_file) ? File.generalFile(req.body.js_file, "/files/js/",req.body.name,'.js') : ''
+            map.zip_file = (req.body.zip_file) ? File.zipFile(req.body.zip_file,"/files/zip/", req.body.name,'') : ''
             map.save(function (error) {
                 if (error) {
                     return res.status(401).json({ error: error, msg: error.message })
-                } else { Activity.activity_log(req, req.body.user_id,' Added map')
-                    return res.status(201).json({ msg: 'map message Successfully received.' })
+                } else { 
+                    Activity.activity_log(req, req.body.user_id,' Added map')
+                    return res.status(201).json({ msg: 'Map Successfully created.' })
                 }
             })
         } catch (error) {
-            return res.status(422).json({ error: error, msg: error.message })
+            return res.status(501).json({ error: error, msg: error.message })
         }
     }
 
     static update(req, res, next) {
         try {
             Maps.findById(req.params.id).populate('user_id').then((map) => {                
-                    map.user_id = req.body.user._id
-                    map.continent_id = req.body.continent_id
-                    map.country_id = req.body.country_id
-                    map.name = req.body.name
+                    map.user_id = req.body.user_id
+                    map.continent_id = (req.body.continent_id) ? req.body.continent_id : map.continent_id
+                    map.country_id = (req.body.country_id) ? req.body.country_id : map.country_id
+                    map.name = (req.body.name) ? req.body.name : map.name
                     map.description = req.body.description
-                    map.image = (req.body.image) ? File.Image(req.body.image) : ''
-                    map.html_file = (req.body.html_file) ? File.generalFile(req.body.html_file, req.body.name) : ''
-                    map.js_file = (req.body.js_file) ? File.generalFile(req.body.js_file, req.body.name) : ''
-                    map.zip_file = (req.body.zip_file) ? File.zipFile(req.body.zip_file, req.body.name) : ''
+                    map.image = (req.body.image) ? File.Image(req.body.image,"/images/profile/", req.body.name,'.png') : map.image
+                    map.html_file = (req.body.html_file) ? File.generalFile(req.body.html_file,"/files/html/", req.body.name,'.html') : map.html_file
+                    map.js_file = (req.body.js_file) ? File.generalFile(req.body.js_file, "/files/js/",req.body.name,'.js') : map.js_file
+                    map.zip_file = (req.body.zip_file) ? File.zipFile(req.body.zip_file,"/files/zip/", req.body.name,'') : map.zip_file
                     map.save(function (error) {
                         if (error) {
-                            Activity.activity_log(req, req.body.user._id, 'Error Updating Map!')
+                            Activity.activity_log(req, req.user, 'Error Updating Map!')
                             return res.status(501).json({ error: error, msg: error.message })
                         } else {
-                            Activity.activity_log(req, req.body.user._id, 'Map Updated Successfully')
+                            Activity.activity_log(req, req.user, 'Map Updated Successfully')
                             return res.status(201).json({
                                 'map': map,
-                                'msg': map.user_id.first_name +
-                                    ' Map Updated Successfully!'
+                                'msg':' Map Updated Successfully!'
                             })
                         }
                     })

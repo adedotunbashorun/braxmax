@@ -45,4 +45,9 @@ module.exports = {
 			Modules: path.resolve(__dirname,'Modules/'),            
         }
 	},
+	devServer: {
+		hot: true,
+		host: '0.0.0.0',
+		port: 5000
+	},
 };

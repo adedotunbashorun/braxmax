@@ -40,5 +40,9 @@ UserSchema.methods.isValid = function (hashedPassword) {
     return bcrypt.compareSync(hashedPassword, this.password)
 }
 
+UserSchema.methods.supports = function(){
+    return Service.hasMany('Support','user_id',this._id)
+}
+
 UserSchema.plugin(uniqueValidator)
 module.exports = mongoose.model('User', UserSchema)
