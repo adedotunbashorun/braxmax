@@ -274,7 +274,7 @@ eval("\r\n\r\nconst Support = __webpack_require__(/*! Modules/Support/Models/Sup
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\n\r\nconst MailSettings = __webpack_require__(/*! Modules/Site/Models/MailSettings */ \"./Modules/Site/Models/MailSettings.js\")\r\n\r\nclass MailSettingsController {\r\n\r\n    static create(req, res, next) {\r\n        try {\r\n            let setting ={\r\n                data: req.body\r\n            }\r\n            if(req.body._id !== \"\"){\r\n                MailSettings.findOneAndUpdate({_id: req.body._id }, setting ,{upsert: true, new: true},function(error) {\r\n                    if (error) {\r\n                        return res.status(401).json({ error: error, msg: error.message })\r\n                    } else {\r\n                        return res.status(201).json({ msg: 'Mail Settings Successfully updated.' })\r\n                    }\r\n                })\r\n            }else{\r\n                var settings = new MailSettings(setting)\r\n                settings.save(function(error) {\r\n                    if (error) {\r\n                        return res.status(401).json({ error: error, msg: error.message })\r\n                    } else {\r\n                        return res.status(201).json({ msg: 'Mail Settings Successfully saved.' })\r\n                    }\r\n                })\r\n            }\r\n        } catch (error) {\r\n            return res.status(422).json({ error: error, msg: error.message })\r\n        }\r\n    }\r\n\r\n    static getAll(req, res, next) {\r\n        try {\r\n            MailSettings.findOne({}, null, { sort: { 'createdAt': -1 } }).then((settings) => {\r\n                return res.status(201).json({ settings: settings })\r\n            }, (error) => {\r\n                return res.status(501).json({ \"success\": false, \"message\": error })\r\n            })\r\n        } catch (err) {\r\n            return res.status(500).json(err)\r\n        }\r\n    }\r\n}\r\nmodule.exports = MailSettingsController\n\n//# sourceURL=webpack:///./Modules/Site/Controllers/MailSettingsController.js?");
+eval("\r\n\r\nconst MailSettings = __webpack_require__(/*! Modules/Site/Models/MailSettings */ \"./Modules/Site/Models/MailSettings.js\")\r\n\r\nclass MailSettingsController {\r\n\r\n    static create(req, res, next) {\r\n        try {\r\n            let setting ={\r\n                data: req.body\r\n            }\r\n            if(req.body._id !== \"\"){\r\n                MailSettings.findOneAndUpdate({_id: req.body._id }, setting ,{upsert: true, new: false},function(error) {\r\n                    if (error) {\r\n                        return res.status(401).json({ error: error, msg: error.message })\r\n                    } else {\r\n                        return res.status(201).json({ msg: 'Mail Settings Successfully updated.' })\r\n                    }\r\n                })\r\n\r\n            }else{\r\n\r\n                let settings = new MailSettings(setting)\r\n                settings.save(function(error) {\r\n                    if (error) {\r\n                        return res.status(401).json({ error: error, msg: error.message })\r\n                    } else {\r\n                        return res.status(201).json({ msg: 'Mail Settings Successfully saved.' })\r\n                    }\r\n                })\r\n\r\n            }\r\n        } catch (error) {\r\n            \r\n            return res.status(422).json({ error: error, msg: error.message })\r\n        }\r\n    }\r\n\r\n    static getAll(req, res, next) {\r\n        try {\r\n            MailSettings.findOne({}, null, { sort: { 'createdAt': -1 } }).then((settings) => {\r\n                return res.status(201).json({ settings: settings })\r\n            }, (error) => {\r\n                return res.status(501).json({ \"success\": false, \"message\": error })\r\n            })\r\n        } catch (err) {\r\n            return res.status(500).json(err)\r\n        }\r\n    }\r\n}\r\nmodule.exports = MailSettingsController\n\n//# sourceURL=webpack:///./Modules/Site/Controllers/MailSettingsController.js?");
 
 /***/ }),
 
@@ -536,7 +536,7 @@ eval("module.exports = {\"app_name\":\"MYMAPPAPi\",\"email\":\"adedotunolawale@g
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = development ={\r\n    app:{\r\n        port: process.env.PORT\r\n    },\r\n    db: {\r\n        url: process.env.DEV_URL,\r\n        host: process.env.DEV_DB_HOST,\r\n        port: parseInt(process.env.DEV_DB_PORT) || 27017,\r\n        name: process.env.DEV_DB_DATABASE || 'mymappapi'\r\n    }\r\n}\n\n//# sourceURL=webpack:///./config/development.js?");
+eval("module.exports = development ={\r\n    app:{\r\n        port: process.env.PORT\r\n    },\r\n    db: {\r\n        url: process.env.DEV_URL,\r\n        host: process.env.DEV_DB_HOST,\r\n        port: parseInt(process.env.DEV_DB_PORT) || 27017,\r\n        name: process.env.DEV_DB_DATABASE || 'mymappapi'\r\n    },\r\n    env: 'development'\r\n}\n\n//# sourceURL=webpack:///./config/development.js?");
 
 /***/ }),
 
@@ -547,7 +547,7 @@ eval("module.exports = development ={\r\n    app:{\r\n        port: process.env.
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const local = __webpack_require__(/*! ./local */ \"./config/local.js\")\r\nconst production = __webpack_require__(/*! ./production */ \"./config/production.js\")\r\nconst development = __webpack_require__(/*! ./development */ \"./config/development.js\")\r\n\r\nlet config = {};\r\nif (false) {} else if (true) {\r\n    config = development;\r\n}else{}\r\nconfig.settings = {\r\n    mail:{\r\n\r\n    },\r\n    system: {\r\n\r\n    }\r\n}\r\n\r\nmodule.exports = config\n\n//# sourceURL=webpack:///./config/index.js?");
+eval("const local = __webpack_require__(/*! ./local */ \"./config/local.js\")\r\nconst production = __webpack_require__(/*! ./production */ \"./config/production.js\")\r\nconst development = __webpack_require__(/*! ./development */ \"./config/development.js\")\r\n\r\nlet config = {};\r\n\r\nif (false) {} else if (true) {\r\n    config = development;\r\n}else{}\r\nconfig.settings = {\r\n    mail:{\r\n\r\n    },\r\n    system: {\r\n\r\n    }\r\n}\r\n\r\nmodule.exports = config\n\n//# sourceURL=webpack:///./config/index.js?");
 
 /***/ }),
 
@@ -558,7 +558,7 @@ eval("const local = __webpack_require__(/*! ./local */ \"./config/local.js\")\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = local = {\r\n    app: {\r\n        port: process.env.PORT || 6000\r\n    },\r\n    db: {\r\n        url: process.env.DEV_URL || \"mongodb://localhost:27017/mymappapi\",\r\n        host: process.env.DEV_DB_HOST,\r\n        port: parseInt(process.env.DEV_DB_PORT) || 27017,\r\n        name: process.env.DEV_DB_DATABASE || 'mymappapi'\r\n    }\r\n}\n\n//# sourceURL=webpack:///./config/local.js?");
+eval("module.exports = local = {\r\n    app: {\r\n        port: process.env.PORT || 6000\r\n    },\r\n    db: {\r\n        url: process.env.DEV_URL || \"mongodb://localhost:27017/mymappapi\",\r\n        host: process.env.DEV_DB_HOST,\r\n        port: parseInt(process.env.DEV_DB_PORT) || 27017,\r\n        name: process.env.DEV_DB_DATABASE || 'mymappapi'\r\n    },\r\n    env: 'development'\r\n}\n\n//# sourceURL=webpack:///./config/local.js?");
 
 /***/ }),
 
@@ -569,7 +569,7 @@ eval("module.exports = local = {\r\n    app: {\r\n        port: process.env.PORT
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = production = {\r\n    app: {\r\n        port: process.env.PORT || 5000\r\n    },\r\n    db: {\r\n        url: (process.env.MONGODB_URI) ? process.env.MONGODB_URI : 'mongodb://heroku_gxrddznw:9qariqjloov1pq9k5er3kr8hrk@ds153766.mlab.com:53766/heroku_gxrddznw',\r\n        host: process.env.DB_HOST || 'localhost',\r\n        port: parseInt(process.env.DB_PORT) || 27017,\r\n        name: process.env.DB_DATABASE || 'mymappapi'        \r\n    }\r\n}\n\n//# sourceURL=webpack:///./config/production.js?");
+eval("module.exports = production = {\r\n    app: {\r\n        port: process.env.PORT || 5000\r\n    },\r\n    db: {\r\n        url: (process.env.MONGODB_URI) ? process.env.MONGODB_URI : 'mongodb://heroku_gxrddznw:9qariqjloov1pq9k5er3kr8hrk@ds153766.mlab.com:53766/heroku_gxrddznw',\r\n        host: process.env.DB_HOST || 'localhost',\r\n        port: parseInt(process.env.DB_PORT) || 27017,\r\n        name: process.env.DB_DATABASE || 'mymappapi'        \r\n    },\r\n    env: 'production'\r\n}\n\n//# sourceURL=webpack:///./config/production.js?");
 
 /***/ }),
 

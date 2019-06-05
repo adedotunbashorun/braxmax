@@ -1,6 +1,8 @@
-const webpack = require('webpack');
+
 const path = require('path');
 var nodeExternals = require('webpack-node-externals')
+const WebpackShellPlugin = require('webpack-shell-plugin');
+const config = require('./config')
 /*
  * SplitChunksPlugin is enabled by default and replaced
  * deprecated CommonsChunkPlugin. It automatically identifies modules which
@@ -23,15 +25,12 @@ var nodeExternals = require('webpack-node-externals')
  */
 
 
-const {
-	NODE_ENV = 'development',
-} = process.env;
 
 module.exports = {
 	entry: './src/index.js',
-	mode: NODE_ENV,
+	mode: config.env,
 	target: 'node',
-	watch: NODE_ENV === 'development',
+	watch: config.env === 'development',
 	externals: [nodeExternals()],
 	output: {
 		path: path.resolve(__dirname, 'build'),
@@ -45,9 +44,9 @@ module.exports = {
 			Modules: path.resolve(__dirname,'Modules/'),            
         }
 	},
-	devServer: {
-		hot: true,
-		host: '0.0.0.0',
-		port: 5000
-	},
+	plugins: [
+		new WebpackShellPlugin({
+		  onBuildEnd: ['npm run build']
+		})
+	]
 };

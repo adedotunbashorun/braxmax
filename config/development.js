@@ -7,5 +7,6 @@ module.exports = development ={
         host: process.env.DEV_DB_HOST,
         port: parseInt(process.env.DEV_DB_PORT) || 27017,
         name: process.env.DEV_DB_DATABASE || 'mymappapi'
-    }
+    },
+    env: 'development'
 }

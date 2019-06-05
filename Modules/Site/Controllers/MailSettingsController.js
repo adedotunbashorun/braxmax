@@ -10,15 +10,17 @@ class MailSettingsController {
                 data: req.body
             }
             if(req.body._id !== ""){
-                MailSettings.findOneAndUpdate({_id: req.body._id }, setting ,{upsert: true, new: true},function(error) {
+                MailSettings.findOneAndUpdate({_id: req.body._id }, setting ,{upsert: true, new: false},function(error) {
                     if (error) {
                         return res.status(401).json({ error: error, msg: error.message })
                     } else {
                         return res.status(201).json({ msg: 'Mail Settings Successfully updated.' })
                     }
                 })
+
             }else{
-                var settings = new MailSettings(setting)
+
+                let settings = new MailSettings(setting)
                 settings.save(function(error) {
                     if (error) {
                         return res.status(401).json({ error: error, msg: error.message })
@@ -26,8 +28,10 @@ class MailSettingsController {
                         return res.status(201).json({ msg: 'Mail Settings Successfully saved.' })
                     }
                 })
+
             }
         } catch (error) {
+            
             return res.status(422).json({ error: error, msg: error.message })
         }
     }
