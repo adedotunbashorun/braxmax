@@ -46,7 +46,7 @@ module.exports = {
 	},
 	plugins: [
 		new WebpackShellPlugin({
-		  onBuildEnd: ['npm run build']
+		  onBuildEnd: ['npm start']
 		})
 	]
 };

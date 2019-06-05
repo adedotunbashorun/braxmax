@@ -5,7 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "dev": "webpack",
-    "start": "nodemon -r dotenv/config build/index.js",
+    "start": "nodemon build/index.js",
     "test": "mocha"
   },
   "keywords": [],

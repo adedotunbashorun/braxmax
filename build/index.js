@@ -536,7 +536,7 @@ eval("module.exports = {\"app_name\":\"MYMAPPAPi\",\"email\":\"adedotunolawale@g
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = development ={\r\n    app:{\r\n        port: process.env.PORT\r\n    },\r\n    db: {\r\n        url: process.env.DEV_URL,\r\n        host: process.env.DEV_DB_HOST,\r\n        port: parseInt(process.env.DEV_DB_PORT) || 27017,\r\n        name: process.env.DEV_DB_DATABASE || 'mymappapi'\r\n    },\r\n    env: 'development'\r\n}\n\n//# sourceURL=webpack:///./config/development.js?");
+eval("module.exports = development ={\r\n    app:{\r\n        port: process.env.PORT || 5000\r\n    },\r\n    db: {\r\n        url: process.env.DEV_URL,\r\n        host: process.env.DEV_DB_HOST,\r\n        port: parseInt(process.env.DEV_DB_PORT) || 27017,\r\n        name: process.env.DEV_DB_DATABASE || 'mymappapi'\r\n    },\r\n    env: 'development'\r\n}\n\n//# sourceURL=webpack:///./config/development.js?");
 
 /***/ }),
 
