@@ -40,7 +40,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use(cors({
-    origin: ['http://localhost:8080', 'http://127.0.0.1:8080', 'http://www.adedotunbashorun.com', 'https://adedotunbashorun.herokuapp.com', 'http://localhost:3000'],
+    origin: ['http://localhost:4000', 'http://127.0.0.1:4200', 'http://www.adedotunbashorun.com', 'https://adedotunbashorun.herokuapp.com', 'http://localhost:3000'],
     credentials: true
 }))
 
